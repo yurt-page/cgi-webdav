@@ -8,7 +8,7 @@ This opens an easy way to millions users to set up their own personal cloud by p
 With a simple UI like [webdav-js](https://github.com/dom111/webdav-js) the WebDAV share can used just from a browser.
 This will be a similar to NextCloud but use much less resources.
 
-Currently, the WebDAV is always implemented as a web server module e.g. Lighttpd [mod_webdav]https://redmine.lighttpd.net/projects/1/wiki/Docs_ModWebDAV) or Apache Httpd [mod_dav](https://httpd.apache.org/docs/current/mod/mod_dav.html).
+Currently, the WebDAV is always implemented as a web server module e.g. Lighttpd [mod_webdav](https://redmine.lighttpd.net/projects/1/wiki/Docs_ModWebDAV) or Apache Httpd [mod_dav](https://httpd.apache.org/docs/current/mod/mod_dav.html).
 The Lighttpd is used in GL.Inet and Turris routers which are powerful enough and using a custom OpenWrt based firmware.
 I created an instruction [WebDAV with Lighttpd on OpenWRT](https://gist.github.com/stokito/5db2aa2cc184717d45600889d8115100) and it works perfectly.
 But a vanilla OpenWrt uses own uhttpd and there is no such WebDAV module for it.
