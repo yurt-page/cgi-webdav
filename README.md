@@ -37,5 +37,5 @@ For example if in the `PROPFIND` was requested only few fields the webdav.cgi an
 ### Don't be a fully compliant to a specification.
 For example locks may be not implemented. The [Litmus test](http://www.webdav.org/neon/litmus/) will be failed but anyway it covers 80% of needs.
 
-
-
+## See also
+* [Awesome WebDAV](https://github.com/fstanis/awesome-webdav)
