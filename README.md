@@ -4,6 +4,7 @@ Essential WebDAV server as a CGI program. You can mount a WebDAV share as a netw
 The main purpose is to make the smallest possible WebDAV server implementation so it can fit into old 4mb routers and to be used with BusyBox httpd or OpenWrt uhttpd.
 But if it's size will be very small it may be even included by default to OpenWrt.
 This opens an easy way to millions users to set up their own personal cloud by putting a flash drive or disk into their router.
+Interesing application may be for a very small embedded devcies that even doesnt't have an SSH server but just a plain Telnet so it's not possible to uplad files into it.
 
 With a simple UI like [webdav-js](https://github.com/dom111/webdav-js) the WebDAV share can used just from a browser.
 This will be a similar to NextCloud but use much less resources.
@@ -15,7 +16,10 @@ But a vanilla OpenWrt uses own uhttpd and there is no such WebDAV module for it.
 The BusyBox httpd is not modular at all.
 I believe that having just a simple CGI program will be preferable that trying to add the WebDAV functionality into them.
 
-There is already exists the [webdavcgi](https://github.com/DanRohde/webdavcgi) but it's Perl based and too heavy for embedded devices.
+There is already exists the [webdavcgi](https://github.com/DanRohde/webdavcgi) but it's Perl based and too heavy for embedded devices. It looks like it was developed before even Apache mod_dav was developed.
+
+One another interesting project is [webdav-server-rs](https://github.com/miquels/webdav-server-rs) which is a full WebDAV server implemented in Rust.
+Still, our main target is embedded devices with MIPS processors that are still not supported by Rust conpiler.
 
 ## Design goals
 ### Only few clients supported
@@ -27,9 +31,11 @@ GNOME and KDE uses their own libraries to access WebDAV so they may have their o
 I sniffed traffic that sends GNOME when opening a WebDAV and it's just terrible. There is opened bugs not fixed for many years. 
 
 ### Don't to use any dependencies like XML parsers.
-That means that things like a custom namespaces may cause it to not work.
+That means that things like a custom namespaces may cause it to not work. Ideally just not to parse anything.
+For example if in the `PROPFIND` was requested only few fields the webdav.cgi anyway will ignore it and return a full set of fields.
 
 ### Don't be a fully compliant to a specification.
 For example locks may be not implemented. The [Litmus test](http://www.webdav.org/neon/litmus/) will be failed but anyway it covers 80% of needs.
+
 
 
