@@ -50,3 +50,4 @@ So now I need to make the plain C implementation.
 
 There should be additional problems: the uhttpd/BysyBox httpd won't forward WebDAV methods (e.g. PROPFIND) into a CGI script. So we need to patch them.
 The uclient, OpenWrt's wget clone, also can't be used to send the PROPFIND requests and needs for a patch too.
+But basically if just add GET/HEAD request handler then we can turn it into a dedicated server
