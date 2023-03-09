@@ -39,3 +39,14 @@ For example locks may be not implemented. The [Litmus test](http://www.webdav.or
 
 ## See also
 * [Awesome WebDAV](https://github.com/fstanis/awesome-webdav)
+
+## Implementation
+Discussion for Lighttpd https://redmine.lighttpd.net/boards/2/topics/10872
+
+Here is a PoC project with a webdav server in Go that works without XML parsing and locks and was tested with Windows MiniRedirector 
+https://github.com/stokito/go-webdav-server/tree/noxml
+It has a mocked pseudo locks because Windows sends them but generally it works!
+So now I need to make the plain C implementation.
+
+There should be additional problems: the uhttpd/BysyBox httpd won't forward WebDAV methods (e.g. PROPFIND) into a CGI script. So we need to patch them.
+The uclient, OpenWrt's wget clone, also can't be used to send the PROPFIND requests and needs for a patch too.
